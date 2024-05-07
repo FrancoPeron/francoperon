@@ -1,0 +1,408 @@
+---
+import Icon from "@components/_atoms/icons/Icon.astro";
+
+import ThemeToggle from "@components/_molecules/ThemeToggle.astro";
+import type { iconPaths } from "@components/_atoms/icons/IconPaths";
+
+/** Main menu items */
+const textLinks: { label: string; href: string }[] = [
+  { label: "Inicio", href: "/" },
+  { label: "Trabajos", href: "/works/" },
+  { label: "Proyectos", href: "/projects/" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contacto", href: "/contact" },
+];
+
+/** Icon links to social media — edit these with links to your profiles! */
+const iconLinks: {
+  label: string;
+  href: string;
+  icon: keyof typeof iconPaths;
+}[] = [
+  { label: "GitHub", href: "https://github.com/me", icon: "github" },
+  { label: "dribbble", href: "https://dribbble.com/me", icon: "dribbble" },
+  { label: "linkedin", href: "https://linkedin.com/me", icon: "linkedin" },
+  // {
+  //   label: "YouTube",
+  //   href: "https://www.youtube.com/@me/",
+  //   icon: "youtube-logo",
+  // },
+];
+---
+
+<nav class="px-8 lg:px-0 py-8">
+
+  <div class="menu-header">
+    <a href="/" class="site-title">
+      <svg width="92" height="38" viewBox="0 0 92 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.162513 17V0.878787H10.1116V3.13576H2.64979V7.78788H9.51282V10.0448H2.64979V17H0.162513ZM13.9141 17V0.878787H20.685C21.683 0.878787 22.5582 1.05535 23.3105 1.40848C24.0782 1.74626 24.6693 2.23758 25.0838 2.88242C25.5137 3.52727 25.7287 4.29495 25.7287 5.18545V5.43879C25.7287 6.45212 25.483 7.26586 24.9917 7.88C24.5157 8.47879 23.9323 8.90101 23.2414 9.14667V9.51515C23.8248 9.54586 24.2931 9.74545 24.6462 10.1139C24.9994 10.4671 25.1759 10.9814 25.1759 11.657V17H22.6656V12.0024C22.6656 11.5879 22.5582 11.2578 22.3432 11.0121C22.1283 10.7665 21.7828 10.6436 21.3068 10.6436H16.4014V17H13.9141ZM16.4014 8.38667H20.4087C21.2992 8.38667 21.9901 8.16404 22.4814 7.71879C22.9727 7.25818 23.2184 6.63636 23.2184 5.85333V5.66909C23.2184 4.88606 22.9727 4.27192 22.4814 3.82667C22.0054 3.36606 21.3145 3.13576 20.4087 3.13576H16.4014V8.38667ZM28.6497 17L33.2558 0.878787H37.6316L42.2146 17H39.6582L38.5988 13.2H32.2885L31.2291 17H28.6497ZM32.9103 10.897H37.977L35.6279 2.42182H35.2594L32.9103 10.897ZM45.7805 17V0.878787H50.5708L54.9466 15.3418H55.3151V0.878787H57.7793V17H52.989L48.6132 2.51394H48.2447V17H45.7805ZM68.5112 17.3224C66.546 17.3224 64.9876 16.7697 63.8361 15.6642C62.6846 14.5434 62.1088 12.9313 62.1088 10.8279V7.05091C62.1088 4.94748 62.6846 3.34303 63.8361 2.23758C64.9876 1.11677 66.546 0.556363 68.5112 0.556363C70.4458 0.556363 71.9351 1.09374 72.9791 2.16848C74.0385 3.24323 74.5682 4.7095 74.5682 6.56727V6.70545H72.104V6.49818C72.104 5.40808 71.8046 4.51758 71.2058 3.82667C70.6223 3.13576 69.7242 2.7903 68.5112 2.7903C67.2829 2.7903 66.3234 3.16646 65.6324 3.91879C64.9415 4.65576 64.5961 5.68444 64.5961 7.00485V10.8739C64.5961 12.179 64.9415 13.2077 65.6324 13.96C66.3234 14.7123 67.2829 15.0885 68.5112 15.0885C69.7242 15.0885 70.6223 14.743 71.2058 14.0521C71.8046 13.3459 72.104 12.4554 72.104 11.3806V10.9891H74.5682V11.3115C74.5682 13.1693 74.0385 14.6356 72.9791 15.7103C71.9351 16.7851 70.4458 17.3224 68.5112 17.3224ZM84.7609 17.3224C82.7803 17.3224 81.2066 16.7697 80.0397 15.6642C78.8728 14.5434 78.2894 12.9313 78.2894 10.8279V7.05091C78.2894 4.94748 78.8728 3.34303 80.0397 2.23758C81.2066 1.11677 82.7803 0.556363 84.7609 0.556363C86.7415 0.556363 88.3153 1.11677 89.4821 2.23758C90.6643 3.34303 91.2555 4.94748 91.2555 7.05091V10.8279C91.2555 12.9313 90.6643 14.5434 89.4821 15.6642C88.3153 16.7697 86.7415 17.3224 84.7609 17.3224ZM84.7609 15.0885C86.0353 15.0885 87.0179 14.72 87.7088 13.983C88.3997 13.2307 88.7452 12.2097 88.7452 10.92V6.95879C88.7452 5.66909 88.3997 4.65576 87.7088 3.91879C87.0179 3.16646 86.0353 2.7903 84.7609 2.7903C83.5173 2.7903 82.5423 3.16646 81.8361 3.91879C81.1298 4.65576 80.7767 5.66909 80.7767 6.95879V10.92C80.7767 12.2097 81.1298 13.2307 81.8361 13.983C82.5423 14.72 83.5173 15.0885 84.7609 15.0885ZM14.0752 37V20.8788H20.4776C21.4602 20.8788 22.3354 21.0784 23.103 21.4776C23.8861 21.8614 24.4925 22.4141 24.9224 23.1358C25.3677 23.842 25.5903 24.6941 25.5903 25.6921V25.9915C25.5903 26.9895 25.36 27.8493 24.8994 28.5709C24.4541 29.2925 23.8477 29.8453 23.08 30.2291C22.3123 30.6129 21.4448 30.8048 20.4776 30.8048H16.5624V37H14.0752ZM16.5624 28.5479H20.2242C21.0994 28.5479 21.798 28.3176 22.32 27.857C22.842 27.3964 23.103 26.7669 23.103 25.9685V25.7382C23.103 24.9244 22.842 24.2873 22.32 23.8267C21.798 23.3661 21.0994 23.1358 20.2242 23.1358H16.5624V28.5479ZM29.9094 37V20.8788H40.0657V23.1358H32.3967V27.7648H39.4209V30.0218H32.3967V34.743H40.1809V37H29.9094ZM44.7315 37V20.8788H51.5025C52.5004 20.8788 53.3756 21.0554 54.1279 21.4085C54.8956 21.7463 55.4867 22.2376 55.9012 22.8824C56.3311 23.5273 56.5461 24.2949 56.5461 25.1855V25.4388C56.5461 26.4521 56.3004 27.2659 55.8091 27.88C55.3332 28.4788 54.7497 28.901 54.0588 29.1467V29.5152C54.6423 29.5459 55.1105 29.7455 55.4637 30.1139C55.8168 30.4671 55.9934 30.9814 55.9934 31.657V37H53.4831V32.0024C53.4831 31.5879 53.3756 31.2578 53.1606 31.0121C52.9457 30.7665 52.6002 30.6436 52.1243 30.6436H47.2188V37H44.7315ZM47.2188 28.3867H51.2261C52.1166 28.3867 52.8075 28.164 53.2988 27.7188C53.7901 27.2582 54.0358 26.6364 54.0358 25.8533V25.6691C54.0358 24.8861 53.7901 24.2719 53.2988 23.8267C52.8229 23.3661 52.1319 23.1358 51.2261 23.1358H47.2188V28.3867ZM67.2975 37.3224C65.3169 37.3224 63.7431 36.7697 62.5762 35.6642C61.4094 34.5434 60.8259 32.9313 60.8259 30.8279V27.0509C60.8259 24.9475 61.4094 23.343 62.5762 22.2376C63.7431 21.1168 65.3169 20.5564 67.2975 20.5564C69.2781 20.5564 70.8518 21.1168 72.0187 22.2376C73.2009 23.343 73.792 24.9475 73.792 27.0509V30.8279C73.792 32.9313 73.2009 34.5434 72.0187 35.6642C70.8518 36.7697 69.2781 37.3224 67.2975 37.3224ZM67.2975 35.0885C68.5718 35.0885 69.5544 34.72 70.2453 33.983C70.9362 33.2307 71.2817 32.2097 71.2817 30.92V26.9588C71.2817 25.6691 70.9362 24.6558 70.2453 23.9188C69.5544 23.1665 68.5718 22.7903 67.2975 22.7903C66.0538 22.7903 65.0789 23.1665 64.3726 23.9188C63.6663 24.6558 63.3132 25.6691 63.3132 26.9588V30.92C63.3132 32.2097 63.6663 33.2307 64.3726 33.983C65.0789 34.72 66.0538 35.0885 67.2975 35.0885ZM78.694 37V20.8788H83.4843L87.8601 35.3418H88.2286V20.8788H90.6928V37H85.9025L81.5268 22.5139H81.1583V37H78.694Z" fill="white"/>
+        <path d="M0.307349 37V20.8788H2.79462V37H0.307349ZM7.19125 37V20.8788H9.67852V37H7.19125Z" fill="white"/>
+        <path d="M0.307349 37V20.8788H2.79462V37H0.307349ZM7.19125 37V20.8788H9.67852V37H7.19125Z" fill="#887BDB"/>
+        </svg>
+        
+      <!-- <Icon
+        icon="fp-logo"
+        color="var(--gray-0)"
+        size="1.8em"
+      /> -->
+    </a>
+    <menu-button>
+      <template>
+        <button class="menu-button" aria-expanded="false">
+          <span class="sr-only">Menu</span>
+          <Icon icon="list" />
+        </button>
+      </template>
+    </menu-button>
+  </div>
+
+	<!-- no Javascript -->
+  <noscript>
+    <ul class="nav-items">
+      {
+        textLinks.map(({ label, href }) => (
+          <li>
+            <a
+              aria-current={Astro.url.pathname === href}
+              class:list={[
+                "link",
+                {
+                  active:
+                    Astro.url.pathname === href ||
+                    (href !== "/" && Astro.url.pathname.startsWith(href)),
+                },
+              ]}
+              href={href}
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </noscript>
+  <noscript>
+    <div class="menu-footer">
+      <div class="socials">
+        {
+          iconLinks.map(({ href, icon, label }) => (
+            <a href={href} class="social">
+              <span class="sr-only">{label}</span>
+              <Icon icon={icon} />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </noscript>
+
+	<!-- ====================================================== -->
+
+  <div id="menu-content" hidden>
+    <ul class="nav-items gap-4 md:gap-0">
+      {
+        textLinks.map(({ label, href }) => (
+          <li>
+            <a
+              aria-current={Astro.url.pathname === href}
+              class:list={[
+                "link",
+                {
+                  active:
+                    Astro.url.pathname === href ||
+                    (href !== "/" && Astro.url.pathname.startsWith(href)),
+                },
+              ]}
+              href={href}
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="menu-footer">
+      <div class="socials">
+        {
+          iconLinks.map(({ href, icon, label }) => (
+            <a href={href} class="social">
+              <span class="sr-only">{label}</span>
+              <Icon icon={icon} />
+            </a>
+          ))
+        }
+      </div>
+      <!-- <div class="theme-toggle">
+        <ThemeToggle />
+      </div> -->
+    </div>
+  </div>
+
+</nav>
+
+<script>
+  class MenuButton extends HTMLElement {
+    constructor() {
+      super();
+
+      // Inject menu toggle button when JS runs.
+      this.appendChild(this.querySelector("template")!.content.cloneNode(true));
+      const btn = this.querySelector("button")!;
+
+      // Hide menu (shown by default to support no-JS browsers).
+      const menuHeader = document.querySelector('.menu-header')!;
+      const menu = document.getElementById("menu-content")!;
+      menu.hidden = true;
+      // Add "menu-content" class in JS to avoid covering content in non-JS browsers.
+      menu.classList.add("menu-content");
+
+      /** Set whether the menu is currently expanded or collapsed. */
+      const setExpanded = (expand: boolean) => {
+        btn.setAttribute("aria-expanded", expand ? "true" : "false");
+        menu.hidden = !expand;
+        if (expand) {
+          menuHeader.classList.add('phone-background');
+        } else {
+          menuHeader.classList.remove('phone-background');
+        }
+      };
+
+      // Toggle menu visibility when the menu button is clicked.
+      btn.addEventListener("click", () => setExpanded(menu.hidden));
+
+      // Hide menu button for large screens.
+      const handleViewports = (e: MediaQueryList | MediaQueryListEvent) => {
+        setExpanded(e.matches);
+        btn.hidden = e.matches;
+      };
+      const mediaQueries = window.matchMedia("(min-width: 50em)");
+      handleViewports(mediaQueries);
+      mediaQueries.addEventListener("change", handleViewports);
+    }
+  }
+  customElements.define("menu-button", MenuButton);
+</script>
+
+<style>
+  nav {
+    z-index: 9999;
+    position: relative;
+    font-family: var(--font-brand);
+    font-weight: 500;
+    margin-bottom: 3.5rem;
+    /* padding: 2rem 0 !important; */
+  }
+
+  .menu-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .phone-background{
+    backdrop-filter: blur(1rem);
+    /* background-color: rgba(49, 49, 49, 0.438);  */
+  }
+
+  .site-title {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    line-height: 1.1;
+    color: var(--gray-0);
+    text-decoration: none;
+  }
+
+  .menu-button {
+    position: relative;
+    display: flex;
+    border: 0;
+    border-radius: 999rem;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    color: var(--gray-300);
+    background: radial-gradient(var(--gray-900), var(--gray-800) 150%);
+    box-shadow: var(--shadow-md);
+  }
+
+  .menu-button[aria-expanded="true"] {
+    color: var(--gray-0);
+    background: linear-gradient(180deg, var(--gray-600), transparent),
+      radial-gradient(var(--gray-900), var(--gray-800) 150%);
+  }
+
+  .menu-button[hidden] {
+    display: none;
+  }
+
+  .menu-button::before {
+    position: absolute;
+    inset: -1px;
+    content: "";
+    background: var(--gradient-stroke);
+    border-radius: 999rem;
+    z-index: -1;
+  }
+
+  /*---------------------*/
+
+  .menu-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+  }
+
+  .nav-items {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    /* gap: .75rem; */
+    font-size: var(--text-sm);
+    line-height: 1.2;
+    list-style: none;
+    padding: 2rem;
+    background-color: #13151a;
+    border-bottom: 1px solid var(--gray-800);
+  }
+
+  .link {
+    display: inline-block;
+    color: var(--gray-300);
+    text-decoration: none;
+		text-transform: uppercase;
+		letter-spacing: 1.76px;
+  }
+
+  .link.active {
+    color: var(--gray-0);
+  }
+
+  .menu-footer {
+    --icon-size: var(--text-xl);
+    --icon-padding: 0.5rem;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1.5rem 2rem 1.5rem 1.5rem;
+    background-color: #13151a;
+    border-radius: 0 0 0.75rem 0.75rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    font-size: var(--icon-size);
+  }
+
+  .social {
+    display: flex;
+    padding: var(--icon-padding);
+    text-decoration: none;
+    /* color: var(--accent-dark); */
+    color: var(--gray-0);
+    transition: color var(--theme-transition);
+  }
+
+  .social:hover,
+  .social:focus {
+    color: var(--gray-0);
+  }
+
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    height: calc(var(--icon-size) + 2 * var(--icon-padding));
+  }
+
+  @media (min-width: 50em) {
+    nav {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .menu-header {
+      padding: 0;
+      backdrop-filter: blur(0rem);
+      background-color: transparent;
+    }
+
+    .site-title {
+      font-size: var(--text-lg);
+    }
+
+    .menu-content {
+      display: contents;
+    }
+
+    .nav-items {
+      position: relative;
+      flex-direction: row;
+      /* font-size: var(--text-sm); */
+      /* border-radius: 999rem; */
+      border: 0;
+      padding: 0.5rem 0.5625rem;
+      /* background: radial-gradient(var(--gray-900), var(--gray-800) 150%); */
+      background: transparent;
+      /* box-shadow: var(--shadow-md); */
+    }
+
+    /* .nav-items::before {
+      position: absolute;
+      inset: -1px;
+      content: "";
+      background: var(--gradient-stroke);
+      border-radius: 999rem;
+      z-index: -1;
+    } */
+
+    .link {
+      padding: 0.5rem 1rem;
+      border-radius: 999rem;
+      transition:
+        color var(--theme-transition),
+        background-color var(--theme-transition);
+    }
+
+    .link:hover,
+    .link:focus {
+      color: var(--gray-100);
+      /* background-color: var(--accent-subtle-overlay); */
+    }
+
+
+    .menu-footer {
+      --icon-padding: 0.375rem;
+
+      justify-self: flex-end;
+      align-items: center;
+      padding: 0;
+      background-color: transparent;
+      box-shadow: none;
+    }
+
+    .socials {
+      display: none;
+    }
+  }
+
+  @media (min-width: 60em) {
+    .socials {
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: nowrap;
+      gap: 0;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .link.active {
+      /* color: SelectedItem; */
+    }
+  }
+
+</style>

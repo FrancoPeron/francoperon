@@ -1,0 +1,61 @@
+---
+import "../styles/global.css";
+import MainHead from "@components/layout/MainHead.astro";
+import Navbar from "@components/layout/Navbar.astro";
+import Container from "@layouts/container/Container.astro";
+import Footer from "@components/layout/footer.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <MainHead />
+  </head>
+  <body class="bg-[url('src/assets/fondo.webp')] bg-local bg-cover bg-top absolute w-full h-full -z-10">
+    <Container><Navbar /></Container>
+    <Container><slot /></Container>
+		<!-- <Footer /> -->
+  </body>
+  <style is:global>
+    :root {
+      --accent: 136, 58, 234;
+      --accent-light: 224, 204, 250;
+      --accent-dark: 49, 10, 101;
+      --accent-gradient: linear-gradient(
+        45deg,
+        rgb(var(--accent)),
+        rgb(var(--accent-light)) 30%,
+        white 60%
+      );
+    }
+    img {
+      content-visibility: auto;
+    }
+    html {
+      font-family: system-ui, sans-serif;
+      background: #13151a;
+      background-size: 224px;
+    }
+    code {
+      font-family:
+        Menlo,
+        Monaco,
+        Lucida Console,
+        Liberation Mono,
+        DejaVu Sans Mono,
+        Bitstream Vera Sans Mono,
+        Courier New,
+        monospace;
+    }
+
+    .fondo{
+      background-image: url(src/assets/fondo.webp);
+    }
+  </style>
+</html>

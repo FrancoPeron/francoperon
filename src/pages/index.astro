@@ -1,0 +1,201 @@
+---
+// Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
+import Layout from "@layouts/Layout.astro";
+
+import { latestPosts } from "@utils/content";
+// console.log(latestPosts)
+
+import { getCollection } from "astro:content";
+
+//-----------------------------------------------------------------
+
+// Component Imports
+// Atoms
+import Icon from "@components/_atoms/icons/Icon.astro";
+
+// Molecules
+import Postlist from "@components/postlist.astro";
+
+// Organisms
+import Hero from "../components/index/Hero.astro";
+import PreviewWork from "../components/PreviewWork.astro";
+import PreviewProject from "../components/PreviewProject.astro";
+import ContactCTA from "../components/index/ContactCTA.astro";
+
+import Grid from "@layouts/container/Grid.astro";
+
+//-----------------------------------------------------------------
+
+// Content Fetching: List four most recent work projects
+const works = (await getCollection("work"))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 4);
+const projects = (await getCollection("project"))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 4);
+---
+<Layout title="Incio">
+  <main class="wrapper stack gap-6 lg:gap-10">
+
+    <Hero
+      title="Hola !"
+      title2="Me llamo Franco"
+      tagline="Soy Desarrollador Frontend con más de 4 años de experiencia. Además, estudio de forma autodidacta Diseño UX/UI y lo aplico en mis proyectos."
+    />
+
+    <svg width="1027" height="173" viewBox="0 0 1027 173" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1026 173V111.5C1026 97.6929 1014.81 86.5 1001 86.5H26C12.1929 86.5 1 75.3071 1 61.5V0" stroke="url(#paint0_linear_1279_30)" stroke-width="1.5"/>
+      <defs>
+      <linearGradient id="paint0_linear_1279_30" x1="496.092" y1="-14.4167" x2="497.334" y2="211.63" gradientUnits="userSpaceOnUse">
+      <stop/>
+      <stop offset="0.495452" stop-color="white"/>
+      <stop offset="1"/>
+      </linearGradient>
+      </defs>
+    </svg>
+      
+
+    <section class="section with-background with-cta">
+      <header class="section-header flex justify-center stack gap-2 lg:gap-4">
+        <div class="flex flex-col items-center gap-4">
+          <Icon icon="work-symbol" size="50px" color="var(--gray-0)" />
+          <h3 class="text-5xl font-normal">Trabajos</h3>
+        </div>
+        <p>Algunos de mis trabajos realizados para clientes</p>
+      </header>
+
+      <div class="gallery">
+        <Grid variant="column">
+          {works.map((work) => (<PreviewWork post={work} />))}
+        </Grid>
+      </div>
+    </section>
+
+    <svg class="m-8"width="1024" height="3" viewBox="0 0 1024 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect y="0.241211" width="1024" height="2" rx="1" fill="url(#paint0_linear_1189_741)"/>
+      <defs>
+      <linearGradient id="paint0_linear_1189_741" x1="0" y1="1.24121" x2="1024" y2="1.24121" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset="0.255" stop-color="white" stop-opacity="0.8"/>
+      <stop offset="0.5" stop-color="white"/>
+      <stop offset="0.75" stop-color="white" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+      </linearGradient>
+      </defs>
+      </svg>
+      
+    
+    <section class="section with-background with-cta">
+      <header class="section-header flex justify-center stack gap-2 lg:gap-4">
+        <div class="flex flex-col items-center gap-4">
+          <Icon icon="project-symbol" size="50px" color="var(--gray-0)" />
+          <h3 class="text-5xl font-normal">Proyectos</h3>
+        </div>
+        <p>Mis proyectos personales</p>
+      </header>
+
+      <div class="gallery">
+        <Grid variant="column">
+          {projects.map((project) => (<li><PreviewProject post={project} /></li>))}
+        </Grid>
+      </div>
+    </section>
+    
+    <ContactCTA />
+  </main>
+</Layout>
+
+
+
+
+<style>
+  /* ====================================================== */
+
+  .section {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .with-background {
+    position: relative;
+  }
+
+  .with-background::before {
+    --hero-bg: var(--bg-image-subtle-2);
+
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    left: 50%;
+    width: 100vw;
+    aspect-ratio: calc(2.25 / var(--bg-scale));
+    top: 0;
+    transform: translateY(-75%) translateX(-50%);
+    background:
+      url("/assets/backgrounds/noise.png") top center/220px repeat,
+      var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
+      var(--gray-999);
+    background-blend-mode: overlay, normal, normal, normal;
+    mix-blend-mode: var(--bg-blend-mode);
+    z-index: -1;
+  }
+
+  .with-background.bg-variant::before {
+    --hero-bg: var(--bg-image-subtle-1);
+  }
+
+  .section-header {
+    justify-self: center;
+    text-align: center;
+    /* max-width: 50ch; */
+    font-size: var(--text-md);
+    color: var(--gray-300);
+  }
+
+  @media (min-width: 50em) {
+    .section {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas: "header header header header" "gallery gallery gallery gallery";
+      gap: 3rem;
+    }
+
+    .section.with-cta {
+      grid-template-areas: "header header header header" "gallery gallery gallery gallery";
+    }
+
+    .section-header {
+      grid-area: header;
+      font-size: var(--text-lg);
+    }
+
+    .gallery {
+      grid-area: gallery;
+    }
+
+    .cta {
+      grid-area: cta;
+    }
+  }
+
+  /* ====================================================== */
+
+  .mention-card {
+    display: flex;
+    height: 7rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid var(--gray-800);
+    border-radius: 1.5rem;
+    color: var(--gray-300);
+    background: var(--gradient-subtle);
+    box-shadow: var(--shadow-sm);
+  }
+
+  @media (min-width: 50em) {
+    .mention-card {
+      border-radius: 1.5rem;
+      height: 9.5rem;
+    }
+  }
+</style>
