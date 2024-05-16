@@ -1,36 +1,28 @@
 ---
-import { getCollection } from "astro:content";
+interface Props {
+  title: string;
+  tagline: string;
+}
 
-//-----------------------------------------------------------------
+const { title, tagline } = Astro.props;
 
-// Component Imports
-
-//Layout
-import Layout from "@layouts/Layout.astro";
-import Grid from "@components/layout/container/Grid.astro";
-
-// Molecules
-import PreviewWork from "@components/_molecules/PreviewWork.astro";
-
-const works = (await getCollection("work"))
-  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-  .slice(0, 4);
 ---
 
-<Layout title="Trabajos">
+<section class="section with-background with-cta">
+  <header class="section-header flex justify-center stack gap-2 lg:gap-4">
+    <div class="flex flex-col items-center gap-4">
+      <slot name="icon-slot" />
+      <h3 class="text-5xl font-normal">{title}</h3>
+    </div>
+    <p>{tagline}</p>
+  </header>
 
   <div class="gallery">
-    <Grid variant="column">
-      {works.map((work) => (<PreviewWork post={work} />))}
-    </Grid>
+    <slot name="preview-slot" />
   </div>
-    <!-- <Pagetitle>
-      <Fragment slot="title">Contact</Fragment>
-      <Fragment slot="desc">We are a here to help.</Fragment>
-    </Pagetitle> -->
+</section>
 
 
-</Layout>
 <style>
   /* ====================================================== */
 
@@ -121,4 +113,5 @@ const works = (await getCollection("work"))
       height: 9.5rem;
     }
   }
+  
 </style>

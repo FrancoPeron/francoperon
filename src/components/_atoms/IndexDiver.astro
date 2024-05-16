@@ -1,0 +1,71 @@
+---
+interface Props {
+  type: string;
+}
+
+const { type } = Astro.props;
+---
+
+{
+  type === "recto" ? (
+    <svg
+      class="my-8 w-full"
+      height="3"
+      viewBox="0 0 1024 3"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        y="0.241211"
+        width="1024"
+        height="2"
+        rx="1"
+        fill="url(#paint0_linear_1189_741)"
+      />
+      <defs>
+        <linearGradient
+          id="paint0_linear_1189_741"
+          x1="0"
+          y1="1.24121"
+          x2="1024"
+          y2="1.24121"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="white" stop-opacity="0" />
+          <stop offset="0.255" stop-color="white" stop-opacity="0.8" />
+          <stop offset="0.5" stop-color="white" />
+          <stop offset="0.75" stop-color="white" stop-opacity="0.8" />
+          <stop offset="1" stop-color="white" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+    </svg>
+  ) : (
+    <svg
+      class="w-full"
+      height="173"
+      viewBox="0 0 1027 173"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M1026 173V111.5C1026 97.6929 1014.81 86.5 1001 86.5H26C12.1929 86.5 1 75.3071 1 61.5V0"
+        stroke="url(#paint0_linear_1279_30)"
+        stroke-width="1.5"
+      />
+      <defs>
+        <linearGradient
+          id="paint0_linear_1279_30"
+          x1="496.092"
+          y1="-14.4167"
+          x2="497.334"
+          y2="211.63"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop />
+          <stop offset="0.495452" stop-color="white" />
+          <stop offset="1" />
+        </linearGradient>
+      </defs>
+    </svg>
+  )
+}

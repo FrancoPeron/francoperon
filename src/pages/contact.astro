@@ -1,18 +1,19 @@
 ---
-import { Icon } from "astro-icon/components";
+
+// Component Imports
+
+//Layout
 import Layout from "@layouts/Layout.astro";
-// import Container from "@components/container/container.astro";
-import Contactform from "@components/contactform.astro";
-// import Pagetitle from "@components/pagetitle.astro";
+
+// Atoms
+import { Icon } from "astro-icon/components";
+
+// Molecules
+import Contactform from "@components/_molecules/ContactForm.astro";
+
 ---
 
 <Layout title="Contact">
-  <!-- <Container> -->
-    <!-- <Pagetitle>
-      <Fragment slot="title">Contact</Fragment>
-      <Fragment slot="desc">We are a here to help.</Fragment>
-    </Pagetitle> -->
-
     <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
       <div>
         <h2 class="font-medium text-2xl text-gray-800 dark:text-gray-200">
@@ -45,5 +46,4 @@ import Contactform from "@components/contactform.astro";
         <Contactform />
       </div>
     </div>
-  <!-- </Container> -->
 </Layout>

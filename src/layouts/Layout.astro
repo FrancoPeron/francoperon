@@ -2,8 +2,8 @@
 import "../styles/global.css";
 import MainHead from "@components/layout/MainHead.astro";
 import Navbar from "@components/layout/Navbar.astro";
-import Container from "@layouts/container/Container.astro";
-import Footer from "@components/layout/footer.astro";
+import Container from "@components/layout/container/Container.astro";
+import Footer from "@components/layout/Footer.astro";
 
 interface Props {
   title: string;
@@ -18,9 +18,15 @@ const { title } = Astro.props;
     <MainHead />
   </head>
   <body class="bg-[url('src/assets/fondo.webp')] bg-local bg-cover bg-top absolute w-full h-full -z-10">
-    <Container><Navbar /></Container>
-    <Container><slot /></Container>
-		<!-- <Footer /> -->
+    <header class="w-full">
+      <Container><Navbar /></Container>
+    </header>
+    <main class="w-full">
+      <Container><slot /></Container>
+    </main>
+    <footer class="w-full border-t border-[#FFFFFF16] ">
+      <Container><Footer /></Container>
+    </footer>
   </body>
   <style is:global>
     :root {

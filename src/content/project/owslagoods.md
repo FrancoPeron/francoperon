@@ -1,7 +1,7 @@
 ---
-title: Owsla
+title: OwslaGoods
 publishDate: 2019-12-01 00:00:00
-img: /assets/d.jpg
+img: /src/assets/works/dolcemora.webp
 img_alt: A bright pink sheet of paper used to wrap flowers curves in front of rich blue background
 description: |
   Pagina de noticias y radio online de la ciudad de Catriel, Rio Negro. 

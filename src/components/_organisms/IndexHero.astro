@@ -1,0 +1,45 @@
+---
+import Icon from "@components/_atoms/icons/Icon.astro";
+import Foto from "@components/_atoms/IndexHeroFoto.astro";
+import HeroLine from "@components/_atoms/IndexHeroLine.astro";
+
+interface Props {
+  subtitle: string;
+  title: string;
+  title2: string;
+  description: string;
+}
+
+const { subtitle, description, title, title2 } = Astro.props;
+---
+
+<div class="flex flex-col-reverse lg:flex-row items-center gap-16 md:gap-20">
+
+  <Foto />
+
+  <div class="flex flex-col items-center lg:items-start gap-8">
+
+    <div class="flex flex-col items-center lg:items-start">
+      <p class="text-[24px] font-normal">{subtitle}</p>
+      <h1 class="text-[54px] md:text-[58px] lg:text-[64px] font-medium">{title}</h1>
+      <h1 class="text-[30px] md:text-[32px] lg:text-[36px] font-light">{title2}</h1>
+    </div>
+
+    <HeroLine />
+
+    {description && <p class="text-[22px] max-w-[90%] md:max-w-[80%] lg:max-w-[100%] text-center lg:text-start">{description}</p>}
+
+    <div class="flex gap-4 lg:gap-8">
+      <a class="btn" href="cv-franco-peron.pdf" download="cv-pranco-peron.pdf">
+        <p class="btn-text">Descargar CV</p>
+        <Icon icon="arrow-down" size="16px" />
+      </a>
+      <a class="btn" href="/contact">
+        <p class="btn-text">Contáctame</p>
+        <Icon icon="paper-plane" size="16px" />
+      </a>
+    </div>
+
+  </div>
+
+</div>

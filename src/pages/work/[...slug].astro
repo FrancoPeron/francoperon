@@ -1,12 +1,12 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 
-import Layout from '../../layouts/Layout.astro';
+import Layout from 'Qlayouts/Layout.astro';
 
-import ContactCTA from '../../components/index/ContactCTA.astro';
+import Contact from '@components/_organisms/IndexContact.astro';
 // import Hero from '../../components/organisms/Hero.astro';
-import Icon from '../../components/_atoms/icons/Icon.astro';
-import Pill from '../../components/Pill.astro';
+import Icon from '@components/_atoms/icons/Icon.astro';
+import Pill from '@components/Pill.astro';
 
 interface Props {
 	entry: CollectionEntry<'work'>;
@@ -52,7 +52,7 @@ const { Content } = await entry.render();
 				</div>
 			</main>
 		</div>
-		<ContactCTA />
+		<!-- <Contact /> -->
 	</div>
 </BaseLayout>
 

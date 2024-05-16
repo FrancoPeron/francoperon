@@ -1,0 +1,82 @@
+---
+// import CallToAction from '../CallToAction.astro';
+// import Icon from "@components/_atoms/icons/Icon.astro";
+
+// Atoms
+import Icon from "@components/_atoms/icons/Icon.astro";
+
+import Contactform from "@components/_molecules/ContactForm.astro";
+import type { iconPaths } from "@components/_atoms/icons/IconPaths";
+
+const iconLinks: {
+  label: string;
+  href: string;
+  icon: keyof typeof iconPaths;
+}[] = [
+  { label: "GitHub", href: "https://github.com/me", icon: "github" },
+  { label: "dribbble", href: "https://dribbble.com/me", icon: "dribbble" },
+  { label: "linkedin", href: "https://linkedin.com/me", icon: "linkedin" },
+  // {
+  //   label: "YouTube",
+  //   href: "https://www.youtube.com/@me/",
+  //   icon: "youtube-logo",
+  // },
+];
+
+---
+
+<div class="flex felx-row rounded-[24px] overflow-hidden w-full bg-[#2A2355]">
+	
+	<div class="flex flex-col w-full p-[44px] gap-[32px] border-r-2 border-[#FFFFFF16] bg-[url('src/assets/fondo_contact.webp')] bg-local bg-cover bg-top">
+
+		<h3 class="text-[40px] text-white">¿Tienes un proyecto en mente en el que pueda ayudarte?</h3>
+		<p class="text-[24px] text-white font-light">Cuéntame mas para poder bridarte una solución.</p>
+		<div class="flex items-end gap-6 mt-auto">
+			{
+				iconLinks.map(({ href, icon, label }) => (
+					<a href={href} class="text-2xl text-white">
+						<span class="sr-only">{label}</span>
+						<Icon icon={icon} />
+					</a>
+				))
+			}
+			<svg class="ml-auto" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M56.111 13.567c.509.618.761 1.727.437 3.543-.32 1.79-1.167 4.03-2.522 6.583-2.703 5.093-7.299 11.194-13.162 17.058s-11.818 10.313-16.68 12.784c-2.436 1.238-4.54 1.949-6.187 2.126-1.67.18-2.647-.206-3.156-.824-.509-.619-.761-1.728-.437-3.544.32-1.79 1.167-4.029 2.522-6.582 2.703-5.094 7.299-11.195 13.162-17.058s11.818-10.313 16.68-12.784c2.436-1.238 4.54-1.949 6.187-2.126 1.67-.18 2.647.205 3.156.824Z" stroke="#fff" stroke-width="2.307"/><path d="M8.96 49.743c-.712-.504-1.179-1.482-1.114-3.141.065-1.642.65-3.757 1.758-6.223 2.212-4.92 6.4-11.007 12.061-17.06 5.663-6.053 11.663-10.857 16.753-13.742 2.552-1.446 4.814-2.375 6.65-2.764 1.854-.394 3.051-.196 3.763.307s1.178 1.482 1.113 3.14c-.064 1.643-.65 3.757-1.758 6.224-2.211 4.92-6.398 11.006-12.06 17.06-5.663 6.052-11.663 10.857-16.754 13.742-2.551 1.445-4.813 2.375-6.649 2.764-1.855.393-3.052.196-3.764-.307Z" stroke="#fff" stroke-width="2.307"/></svg>
+		</div>
+	</div>
+	<Contactform />
+
+</div>
+
+<style>
+	aside {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 3rem;
+		border-top: 1px solid var(--gray-800);
+		border-bottom: 1px solid var(--gray-800);
+		padding: 5rem 1.5rem;
+		background-color: var(--gray-999_40);
+		box-shadow: var(--shadow-sm);
+	}
+
+	h2 {
+		font-size: var(--text-xl);
+		text-align: center;
+		max-width: 15ch;
+	}
+
+	@media (min-width: 50em) {
+		aside {
+			padding: 7.5rem;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+
+		h2 {
+			font-size: var(--text-3xl);
+			text-align: left;
+		}
+	}
+</style>

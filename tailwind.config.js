@@ -9,9 +9,9 @@ module.exports = {
       colors: {
         gray: colors.neutral,
       },
-      fontFamily: {
-        sans: ["InterVariable", "Inter", ...defaultTheme.fontFamily.sans],
-      },
+      // fontFamily: {
+      //   sans: ["InterVariable", "Inter", ...defaultTheme.fontFamily.sans],
+      // },
       aspectRatio: {
         "4/3": "4 / 3",
         "3/2": "3 / 2",
