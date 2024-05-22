@@ -6,7 +6,7 @@ import LinksList from "@components/_molecules/LinksList.astro";
 import ThemeToggle from "@components/_molecules/ThemeToggle.astro";
 ---
 
-<nav class="relative p-8 mb-8 lg:mb-16 z-50">
+<nav class="relative py-8 z-50">
   <div class="menu-header flex justify-between">
     <a href="/"><Logo /></a>
 
@@ -20,6 +20,7 @@ import ThemeToggle from "@components/_molecules/ThemeToggle.astro";
         </button>
       </template>
     </menu-button>
+    
   </div>
 
   <!-- ====================================================== -->
@@ -27,7 +28,7 @@ import ThemeToggle from "@components/_molecules/ThemeToggle.astro";
   <div id="menu-content" hidden>
     <LinksList />
     <div class="menu-footer">
-      <SocialsList />
+      <SocialsList size="18px"/>
       <!-- <div class="theme-toggle">
         <ThemeToggle />
       </div> -->

@@ -7,17 +7,31 @@ import { getCollection } from "astro:content";
 
 //Layout
 import Layout from "@layouts/Layout.astro";
-import Grid from "@components/layout/container/Grid.astro";
+
+// Atoms
+import Icon from "@components/_atoms/icons/Icon.astro";
 
 // Molecules
+import PreviewProject from "@components/_molecules/PreviewProject.astro";
+
+// Organisms
+import IndexSection from "@components/_organisms/IndexSection.astro";
+
+const projects = (await getCollection("project"))
+  .sort(
+    (a: { data: { publishDate: Date } }, b: { data: { publishDate: Date } }) =>
+      b.data.publishDate.getTime() - a.data.publishDate.getTime()
+  )
+  .slice(0, 4);
 ---
 
 <Layout title="Proyectos">
 
-    <!-- <Pagetitle>
-      <Fragment slot="title">Contact</Fragment>
-      <Fragment slot="desc">We are a here to help.</Fragment>
-    </Pagetitle> -->
-
+  <IndexSection title="Proyectos" tagline="Mis proyectos personales">
+   
+    <div class="flex flex-col lg:flex-row gap-12" slot="preview-slot">
+      {projects.map((project: any) => <PreviewProject post={project} />)}
+    </div>
+  </IndexSection>
 
 </Layout>

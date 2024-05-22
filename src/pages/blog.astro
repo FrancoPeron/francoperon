@@ -13,14 +13,8 @@ import Postlist from "@components/postlist.astro";
 ---
 
 <Layout title="Blog">
-  <div class="container px-8 py-5 lg:py-8 mx-auto xl:px-5 max-w-screen-lg">
-        <!-- <Pagetitle>
-      <Fragment slot="title">Blog</Fragment>
-      <Fragment slot="desc">We are a here to help.</Fragment>
-    </Pagetitle> -->
-
-		
-		<main>
+	<h3 class="text-5xl text-center font-normal">Blog</h3>
+	
       <div class="grid gap-10 lg:gap-10 md:grid-cols-2">
         {
           latestPosts
@@ -39,8 +33,6 @@ import Postlist from "@components/postlist.astro";
 					))
         }
       </div>
-    </main>
-  </div>
 </Layout>
 
 <style>

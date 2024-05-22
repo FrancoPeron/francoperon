@@ -8,7 +8,7 @@ import Button from "@components/_molecules/button.astro";
   action="https://api.web3forms.com/submit"
   method="POST"
   id="form"
-  class="needs-validation flex flex-col w-full p-[44px]"
+  class="needs-validation flex flex-col w-full h-full p-[44px]"
   novalidate>
   <input type="hidden" name="access_key" value="278c9ec5-714e-44d7-a365-e65c4dc2422a" />
   <!-- Create your free access key from https://web3forms.com/ -->
@@ -22,37 +22,41 @@ import Button from "@components/_molecules/button.astro";
       name="name"
     />
     <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
-      Please provide your full name.
+      Porfavor ingresa tu nombre.
     </div>
   </div>
+
   <div class="mb-5">
     <label for="email_address" class="sr-only">Email Address</label><input
       id="email_address"
       type="email"
-      placeholder="Email Address"
+      placeholder="Ingresa tu email"
       name="email"
       required
       class="w-full px-4 py-3 bg-[#272344] border placeholder:text-slate-300 rounded-xl outline-none focus:ring-2 border-gray-300 focus:border-gray-600 ring-gray-100 dark:border-gray-600 dark:focus:border-white dark:ring-0"
       />
     <div class="empty-feedback text-red-400 text-sm mt-1">
-      Please provide your email address.
+      Porfavor ingresa tu email.
     </div>
     <div class="invalid-feedback text-red-400 text-sm mt-1">
-      Please provide a valid email address.
+      Porfavor ingresa un email valido.
     </div>
   </div>
-  <div class="mb-3 flex-1">
+
+  <div class="mb-5 flex-1">
     <textarea
       name="message"
       required
-      placeholder="Your Message"
-      class="w-full h-full px-4 py-3 bg-[#272344] border placeholder:text-slate-300 rounded-xl outline-none focus:ring-2 border-gray-300 focus:border-gray-600 ring-gray-100 dark:border-gray-600 dark:focus:border-white dark:ring-0"
+      placeholder="Tu mensaje..."
+      class="w-full h-full min-h-[100px] px-4 py-3 bg-[#272344] border placeholder:text-slate-300 rounded-xl outline-none focus:ring-2 border-gray-300 focus:border-gray-600 ring-gray-100 dark:border-gray-600 dark:focus:border-white dark:ring-0"
     ></textarea>
     <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
-      Please enter your message.
+      Porfavor ingresa tu mensaje 
     </div>
   </div>
-  <Button class="border bg-[#272344] rounded-xl" type="submit" size="lg" block>Enviar Mensaje</Button>
+
+  <!-- <Button class="border bg-[#272344] rounded-xl" type="submit" size="lg" block>Enviar Mensaje</Button> -->
+  <button class="w-full px-4 py-3 bg-[#272344] hover:bg-[#1e1b35] rounded-xl focus:text-white border border-gray-300  hover:ring-2 focus:ring-2 border-gray-300 focus:border-gray-600 ring-gray-100 dark:border-gray-600 dark:focus:border-white dark:ring-0 transition-all hover:transition-all duration-150" type="submit">Enviar Mensaje</button>
   <div id="result" class="mt-3 text-center"></div>
 </form>
 

@@ -4,7 +4,7 @@ const { class: className } = Astro.props;
 
 <div
   class:list={[
-    "w-full mx-auto max-w-screen-lg",
+    "w-full mx-auto max-w-screen-lg flex flex-col gap-8 lg:gap-16 px-8",
     className,
   ]}>
   <slot />

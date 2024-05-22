@@ -7,17 +7,18 @@ import Footer from "@components/layout/Footer.astro";
 
 interface Props {
   title: string;
+  description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <MainHead />
+    <MainHead title={title} description={description} />
   </head>
-  <body class="bg-[url('src/assets/fondo.webp')] bg-local bg-cover bg-top absolute w-full h-full -z-10">
+  <body class="bg-[url('/src/assets/fondo.webp')] bg-local bg-cover bg-top absolute w-full h-full -z-10 flex flex-col gap-8 lg:gap-14">
     <header class="w-full">
       <Container><Navbar /></Container>
     </header>

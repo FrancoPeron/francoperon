@@ -3,6 +3,12 @@
 import Icon from "@components/_atoms/icons/Icon.astro";
 import type { iconPaths } from "@components/_atoms/icons/IconPaths";
 /** Icon links to social media — edit these with links to your profiles! */
+interface Props {
+  size: string;
+}
+
+const { size = "18px" } = Astro.props;
+
 const iconLinks: {
   label: string;
   href: string;
@@ -22,7 +28,7 @@ const iconLinks: {
     iconLinks.map(({ href, icon, label }) => (
       <a href={href} class="flex text-[22px] text-white">
         <span class="sr-only">{label}</span>
-        <Icon icon={icon} size="18px" />
+        <Icon icon={icon} size={size} />
       </a>
     ))
   }
