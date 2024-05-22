@@ -10,5 +10,7 @@ export default defineConfig({
   // 
   integrations: [mdx(), tailwind(), icon()],
   output: "server",
-  adapter: cloudflare()
+  adapter: cloudflare({
+    imageService: 'cloudflare'
+  })
 });
