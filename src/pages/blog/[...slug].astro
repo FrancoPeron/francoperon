@@ -1,130 +1,79 @@
 ---
+export const prerender = true;
 import { type CollectionEntry, getCollection } from 'astro:content';
 import { Image, Picture } from "astro:assets";
-// import Authorcard from "@components/authorcard.astro";
-// import Container from "@components/container.astro";
-import Label from "@components/_atoms/label.astro";
-import { authors } from "@data/authors";
-import { categories } from "@data/category";
-import Layout from "@layouts/Layout.astro";
-import { getFormattedDate } from "@utils/all";
-import { getCollection } from "astro:content";
-
-import type { Author } from "@data/authors";
 import type { Category } from "@data/category";
+import { categories } from "@data/category"
 
-// type Props = CollectionEntry<"blog">;
+//-----------------------------------------------------------------
+
+
+import Layout from "@layouts/Layout.astro";
+
+import Label from "@components/_atoms/label.astro";
+
+import Icon from '@components/_atoms/icons/Icon.astro';
+import IndexDiver from "@components/_atoms/IndexDiver.astro";
+
+//-----------------------------------------------------------------
+
+interface Props {
+	blogPost: CollectionEntry<'blog'>;
+}
 
 export async function getStaticPaths() {
-  const blog = await getCollection("blog");
-  return blog.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
+
+  const blogPost = await getCollection("blog");
+
+  return blogPost.map((blogPost) => ({
+    params: { slug: blogPost.slug },
+    props: { blogPost },
   }));
 }
 
-const { post } = Astro.props;
+const { blogPost } = Astro.props;
 
-const { Content, remarkPluginFrontmatter } = await post.render();
+const { Content } = await blogPost.render();
 
-const author = authors.find((item) => item.slug === post.data.author) as Author;
 const category = categories.find(
-  (item) => item.slug === post.data.category
+  (item) => item.slug === blogPost.data.category
 ) as Category;
 ---
 
-<Layout title={post.data.title} description={post.data.excerpt}
-  <div class="container px-8 py-5 lg:py-8 mx-auto xl:px-5 max-w-screen-lg">
-    <div class="max-w-screen-md mx-auto">
-      <div class="text-center">
+<Layout title={blogPost.data.title} description={blogPost.data.excerpt}>
+	<div class="flex flex-col">
+		
+		<div class="flex justify-between">
+
+			<a class="flex items-center gap-4" href="/works/"><Icon icon="arrow-left" />Work</a>
+			<div class="flex gap-4">
+				{blogPost.data.tags.map((t) => <p class="px-4 py-2 "># {t}</p>)}
+			</div>
+		
+		</div>
+
+		<IndexDiver type="recto" />
+
+		<div class="flex flex-col items-center my-12 gap-16">
+
+			<div class="flex flex-col items-center gap-4">
         <Label theme={category.color}>{category.title}</Label>
-      </div>
-
-      <h1
-        class="mt-2 mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
-        {post.data.title}
-      </h1>
-
-      <div class="flex justify-center mt-3 space-x-3 text-gray-500">
-        <div class="flex items-center gap-3">
-          <div class="relative flex-shrink-0 w-10 h-10">
-            {
-              author.image && (
-                <Image
-                inferSize={true}
-                  src={author.image}
-                  alt="Author Photo"
-                  width={80}
-                  height={80}
-                  loading="eager"
-                  class="rounded-full"
-                />
-              )
-            }
-          </div>
-
-          <div>
-            <p class="text-gray-800 dark:text-gray-400">
-              {author.name}
-            </p>
-            <div class="flex items-center space-x-2 text-sm">
-              <time
-                class="text-gray-500 dark:text-gray-400"
-                datetime={post.data.publishDate}>
-                {getFormattedDate(post.data.publishDate)}
-              </time>
-              <span>
-                · {Math.round(remarkPluginFrontmatter?.estReadingTime) || "5"} min
-                read
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div
-    class="relative z-0 max-w-screen-lg mx-auto overflow-hidden lg:rounded-lg aspect-video">
-    {
-      post.data.image && (
-        <Picture
-          inferSize={true}
-          src={post.data.image}
-          heignt={576}
-          widths={[200, 400, 800]}
-          sizes="(max-width: 640px) 90vw, 480px"
-          alt="Thumbnail"
-          loading="eager"
-          class="w-full"
-        />
-      )
-    }
-  </div>
-
-  <div class="container px-8 py-5 lg:py-8 mx-auto xl:px-5 max-w-screen-lg">
-    <article class="max-w-screen-md mx-auto">
-      <div class="mx-auto my-3 prose prose-base dark:prose-invert prose-a:text-blue-600">
-
+				<h1 class="text-[48px] font-semibold text-center">{blogPost.data.title}</h1>
+				<!-- <p class="text-[20px] text-center">{blogPost.data.description}</p> -->
+			</div>
+			{blogPost.data.image && <img class="w-[82%] h-[500px] object-cover rounded-3xl" src={blogPost.data.image} alt={blogPost.data.title || ''} />}
+			
+			<div class="w-[80%] prose prose-stone prose-li:text-white prose-headings:text-white prose-base prose-a:text-blue-600 prose-img:rounded-xl prose-img:w-full">
         <Content />
-
-        <div class="flex flex-wrap items-center w-full gap-3 md:w-auto">
-          {
-            post.data.tags.map((tag:any) => (
-              <span class="text-sm text-gray-500">#{tag}</span>
-            ))
-          }
-        </div>
       </div>
 
-      <div class="flex justify-center mt-7 mb-7">
-        <a
-          href="/"
-          class="px-5 py-3 text-sm text-blue-600 transition rounded-md dark:text-blue-500 bg-blue-50 hover:bg-blue-100">
-          ← View all posts
-        </a>
-      </div>
-      <!-- {author && <Authorcard author={author} />} -->
-    </article>
-  </div>
+		</div>
+
+		<IndexDiver type="recto" />
+		
+		
+	</div>
+	<!-- <Contact /> -->
 </Layout>
+
+

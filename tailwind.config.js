@@ -6,6 +6,13 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            color: '#fff',
+          },
+        },
+      },
       colors: {
         gray: colors.neutral,
       },
@@ -18,7 +25,11 @@ module.exports = {
         "2/3": "2 / 3",
         "9/16": "9 / 16",
       },
+
+      
     },
+
+    
   },
   plugins: [
     require("@tailwindcss/typography"),

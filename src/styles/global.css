@@ -173,6 +173,11 @@ h5 {
 }
 
 
+
+::marker,strong {
+    color: white !important;
+}
+
 /* Utilities */
 
 .sr-only {
