@@ -9,8 +9,6 @@ import cloudflare from "@astrojs/cloudflare";
 export default defineConfig({
   // 
   integrations: [mdx(), tailwind(), icon()],
-  output: "server",
-  adapter: cloudflare({
-    imageService: 'cloudflare'
-  })
+  output: "hybrid",
+  adapter: cloudflare()
 });
