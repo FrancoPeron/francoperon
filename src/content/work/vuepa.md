@@ -1,7 +1,7 @@
 ---
 title: Vuepa
 publishDate: 2022-11-02 00:00:00
-img: /src/assets/works/vuepa.webp
+img: /src/assets/vuepa.webp
 img_alt: Pagina de noticias radio y streaming Online.
 description: |
   Pagina de noticias radio y streaming Online.
