@@ -11,7 +11,4 @@ export default defineConfig({
   integrations: [mdx(), tailwind(), icon()],
   output: "hybrid",
   adapter: cloudflare(),
-  build: {
-    assets: 'assets'
-  }
 });

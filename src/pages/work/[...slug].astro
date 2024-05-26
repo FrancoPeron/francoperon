@@ -1,7 +1,8 @@
 ---
 // export const prerender = true;
+import { Image } from 'astro:assets';
 import { type CollectionEntry, getCollection } from 'astro:content';
-
+import { type Img, images } from "@data/images";
 //-----------------------------------------------------------------
 
 import Layout from '@layouts/Layout.astro';
@@ -18,18 +19,19 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-
 	const work = await getCollection('work');
-	
 	return work.map((workPost) => ({
 		params: { slug: workPost.slug },
 		props: { workPost },
 	}));
-	
 }
 
 const { workPost } = Astro.props;
 const { Content } = await workPost.render();
+
+const image = images.find(
+  (item) => item.title === workPost.data.img
+) as Img;
 ---
 
 <Layout title={workPost.data.title} description={workPost.data.description}>
@@ -52,7 +54,7 @@ const { Content } = await workPost.render();
 				<h1 class="text-[68px] font-semibold text-center">{workPost.data.title}</h1>
 				<p class="text-[20px] text-center">{workPost.data.description}</p>
 			</div>
-			{workPost.data.img && <img class="w-[82%] rounded-3xl" src={workPost.data.img} alt={workPost.data.img_alt || ''} />}
+			<Image class="w-[82%] rounded-3xl" src={image.img} alt={workPost.data.img_alt || ''} />
 			
 			<div class="w-[80%]"><Content /></div>
 			
