@@ -1,7 +1,7 @@
 ---
 title: Catriel Online
 publishDate: 2022-12-01 00:00:00
-img: /src/assets/catrielonline.webp
+img: ./src/assets/catrielonline.webp
 img_alt: Pagina de noticias radio y streaming Online.
 description: |
   Pagina de noticias radio y streaming Online.
