@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import MainHead from "@components/layout/MainHead.astro";
 import Navbar from "@components/layout/Navbar.astro";
-// import Footer from "@components/layout/Footer.astro";
+import Footer from "@components/layout/Footer.astro";
 import Container from "@components/layout/container/Container.astro";
 
 interface Props {
@@ -18,48 +18,15 @@ const { title, description } = Astro.props;
   <head>
     <MainHead title={title} description={description} />
   </head>
-  <body class="bg-[url('/src/assets/fondo.webp')] bg-local bg-cover bg-top absolute w-full h-full -z-10 flex flex-col gap-8 lg:gap-14">
-    <header class="w-full">
-      <Container><Navbar /></Container>
+  <body class="bg-[url('/src/assets/fondo.webp')] bg-local bg-cover bg-top absolute w-full h-auto -z-10 flex flex-col gap-8 lg:gap-14">
+    <header class="w-full mx-auto max-w-screen-lg flex flex-col gap-8 lg:gap-16">
+      <Navbar />
     </header>
-    <main class="w-full">
-      <Container><slot /></Container>
+    <main class="w-full mx-auto max-w-screen-lg flex flex-col gap-8 lg:gap-16 px-8">
+      <slot />
     </main>
-    <footer class="w-full border-t border-[#FFFFFF16] ">
-      <!-- <Container><Footer /></Container> -->
+    <footer class="w-full mx-auto max-w-screen-lg flex flex-col gap-8 lg:gap-16 px-8 border-t border-[#FFFFFF16]">
+      <Footer />
     </footer>
   </body>
-  <style is:global>
-    :root {
-      --accent: 136, 58, 234;
-      --accent-light: 224, 204, 250;
-      --accent-dark: 49, 10, 101;
-      --accent-gradient: linear-gradient(
-        45deg,
-        rgb(var(--accent)),
-        rgb(var(--accent-light)) 30%,
-        white 60%
-      );
-    }
-    img {
-      content-visibility: auto;
-    }
-    html {
-      font-family: system-ui, sans-serif;
-      background: #13151a;
-      background-size: 224px;
-    }
-    code {
-      font-family:
-        Menlo,
-        Monaco,
-        Lucida Console,
-        Liberation Mono,
-        DejaVu Sans Mono,
-        Bitstream Vera Sans Mono,
-        Courier New,
-        monospace;
-    }
-
-  </style>
 </html>

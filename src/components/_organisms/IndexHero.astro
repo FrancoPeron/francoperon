@@ -21,15 +21,15 @@ const { subtitle, description, title, title2 } = Astro.props;
 
     <div class="flex flex-col items-center lg:items-start">
       <p class="text-[24px] font-normal">{subtitle}</p>
-      <h1 class="text-[54px] md:text-[58px] lg:text-[64px] font-medium">{title}</h1>
-      <h1 class="text-[30px] md:text-[32px] lg:text-[36px] font-light">{title2}</h1>
+      <h1 class="text-[54px] text-center md:text-[58px] lg:text-[64px] font-medium">{title}</h1>
+      <h1 class="text-[30px] text-center md:text-[32px] lg:text-[36px] font-light">{title2}</h1>
     </div>
 
     <HeroLine />
 
     {description && <p class="text-[22px] max-w-[90%] md:max-w-[80%] lg:max-w-[100%] text-center lg:text-start">{description}</p>}
 
-    <div class="flex gap-4 lg:gap-8">
+    <div class="flex md:flex-row flex-col gap-4 lg:gap-8">
       <a class="btn" href="cv-franco-peron.pdf" download="cv-pranco-peron.pdf">
         <p class="btn-text">Descargar CV</p>
         <Icon icon="arrow-down" size="16px" />

@@ -49,7 +49,7 @@
 		0px 16px 16px rgba(9, 11, 17, 0.1), 0px 4px 9px rgba(9, 11, 17, 0.12);
 
 	/* Text Sizes */
-	--text-sm: 0.875rem;
+	--text-sm: 0.875rem; 
 	--text-base: 1rem;
 	--text-md: 1.125rem;
 	--text-lg: 1.25rem;
@@ -110,19 +110,13 @@
 		0px 16px 16px rgba(255, 255, 255, 0.1), 0px 4px 9px rgba(255, 255, 255, 0.12);
 }
 
-html,
-body {
-	height: 100%;
-	overflow-x: hidden;
-}
 
-body {
-	/* background-color: var(--gray-999); */
-	color: white;
-	font-family: var(--font-brand);
-	-webkit-font-smoothing: antialiased;
-	line-height: 1.5;
-}
+
+/*========================================================*/
+/*========================================================*/
+/*========================================================*/
+/*========================================================*/
+/*========================================================*/
 
 *,
 *::after,
@@ -131,9 +125,18 @@ body {
 	margin: 0;
 }
 
+html{
+	background: #13151a;
+}
+body {
+	color: white;
+	-webkit-font-smoothing: antialiased;
+}
+
 img {
 	max-width: 100%;
 	height: auto;
+	content-visibility: auto;
 }
 
 a {
@@ -172,11 +175,30 @@ h5 {
 	font-size: var(--text-xl);
 }
 
-
-
-::marker,strong {
-    color: white !important;
+::marker,
+strong {
+	color: white !important;
 }
+
+code {
+	font-family:
+		Menlo,
+		Monaco,
+		Lucida Console,
+		Liberation Mono,
+		DejaVu Sans Mono,
+		Bitstream Vera Sans Mono,
+		Courier New,
+		monospace;
+}
+
+
+
+/*========================================================*/
+/*========================================================*/
+/*========================================================*/
+/*========================================================*/
+/*========================================================*/
 
 /* Utilities */
 
@@ -211,9 +233,6 @@ h5 {
 .center {
 	align-items: center;
 }
-
-
-
 
 
 .btn {
